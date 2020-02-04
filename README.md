@@ -1,2 +1,19 @@
 # spring_boot_demo
-It is demo project, which will have starter project,rest endpoints,db call using h2,exception handling,hibernater,actuater,swagger etc
+## 1. Spring boot starter project (1_springboot_hello)
+   
+   1. Create starter project using STS or https://start.spring.io/ with below starters
+      - Spring Web
+   2. Create Rest Endpoint with Hello message
+      http://localhost:8080/hello
+      
+      @RestController
+      public class HelloController {
+
+        @GetMapping("/hello")
+        public String message(){
+          return "Hello";
+        }
+      }
+      
+   3. Run the application as Spring boot application and check the rest endpoint
+      - it should return hello message
