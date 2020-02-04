@@ -8,10 +8,10 @@
       
       @RestController <br/>
       public class HelloController { <br/>
-         >>@GetMapping("/hello") <br/>
-         >>public String message(){ <br/>
-         >>>return "Hello"; <br/>
-         >>} <br/>
+         @GetMapping("/hello") <br/>
+         public String message(){ <br/>
+         return "Hello"; <br/>
+         } <br/>
       }  
       
    3. Run the application as Spring boot application and check the rest endpoint
