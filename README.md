@@ -6,14 +6,13 @@
    2. Create Rest Endpoint with Hello message
       http://localhost:8080/hello
       
-      @RestController
-      public class HelloController {
-
-        @GetMapping("/hello")
-        public String message(){
-          return "Hello";
-        }
-      }
+      @RestController <br/>
+      public class HelloController { <br/>
+           @GetMapping("/hello") <br/>
+           public String message(){ <br/>
+             return "Hello"; <br/>
+           } <br/>
+      }  
       
    3. Run the application as Spring boot application and check the rest endpoint
       - it should return hello message
