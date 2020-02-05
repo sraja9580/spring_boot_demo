@@ -120,10 +120,10 @@
 ### 3.2 Info Endpoint Details
    By default info endpoint will not have any data.We can add static info(info and description), environment info(java version) through application properties (https://www.baeldung.com/spring-boot-info-actuator-custom)
    
-   1. Config satic info   <br/>  
+   1. Config satic info <br/>  
       info.app.name= Spring Boot Actuator <br/>
       info.app.description=This project is to simulate Acuator  <br/>
-      info.app.version=1.0.0 <br/>
+      info.app.version=1.0.0 <br/>      
       
    2. Config Env info <br/>
       info.java-vendor = ${java.specification.vendor} <br/>
