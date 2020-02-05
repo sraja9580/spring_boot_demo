@@ -95,3 +95,20 @@
         "description": "Never Settle",
         "price": 30000.0
      }
+## 3. Actuator (3_springboot_actuator)   
+   1. Create starter project using STS or https://start.spring.io/ with below starters
+      - Spring Web
+      - Actuator
+   2. Create Rest Endpoint with Hello message
+      http://localhost:8080/hello
+      
+      @RestController <br/>
+      public class HelloController { <br/>
+         @GetMapping("/hello") <br/>
+         public String message(){ <br/>
+         return "Hello"; <br/>
+         } <br/>
+      }  
+      
+   3. Run the application as Spring boot application and check the rest endpoint
+      - it should return hello message
