@@ -141,4 +141,10 @@
       management.endpoints.web.exposure.include=*<br/>
       
    2. Enable specific endpoints<br/>
+      management.endpoints.web.exposure.include=info,env,health
+      
+   3. Enable other than specific urls
+      **to achive this we have to expose all the endpoints using inclue=* and specifi execlusion urls in management.endpoints.web.exposure.exclude**
+      management.endpoints.web.exposure.include=*<br/>
+      management.endpoints.web.exposure.exclude=loggers<br/>
    
