@@ -96,6 +96,7 @@
         "price": 30000.0
      }
 ## 3. Actuator (3_springboot_actuator)   
+### 3.1 Create project with Actuator
    1. Create starter project using STS or https://start.spring.io/ with below starters
       - Spring Web
       - Actuator
@@ -115,3 +116,22 @@
       - http://localhost:8080/actuator
       - It will display helth and info endpoint
       - If we need management endpoint we have to enable in property file
+      
+### 3.2 Info Endpoint Details
+   By default info endpoint will not have any data.We can add static info(info and description), environment info(java version) through application properties
+   https://www.baeldung.com/spring-boot-info-actuator-custom
+   
+   1. Config satic info    
+      info.app.name= Spring Boot Actuator
+      info.app.description=This project is to simulate Acuator 
+      info.app.version=1.0.0
+      
+   2. Config Env info
+      info.java-vendor = ${java.specification.vendor}
+      
+   3. No check the actuator info endpoint above configured info will be displayed.
+      http://localhost:8080/actuator/info      
+      
+   4. We can config dynamic info also refer below URL for more
+      https://www.baeldung.com/spring-boot-info-actuator-custom
+  
