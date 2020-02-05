@@ -144,7 +144,7 @@
       management.endpoints.web.exposure.include=info,env,health
       
    3. Enable other than specific urls  <br/>
-      **to achive this we have to expose all the endpoints using inclue=* and specifi execlusion urls in management.endpoints.web.exposure.exclude**
+      **to achive this we have to expose all the endpoints using inclue=* and specifi execlusion urls in management.endpoints.web.exposure.exclude** <br/>
       management.endpoints.web.exposure.include=*<br/>
       management.endpoints.web.exposure.exclude=loggers<br/>
       refere https://www.baeldung.com/spring-boot-actuators
