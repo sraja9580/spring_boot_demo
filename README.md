@@ -118,20 +118,19 @@
       - If we need management endpoint we have to enable in property file
       
 ### 3.2 Info Endpoint Details
-   By default info endpoint will not have any data.We can add static info(info and description), environment info(java version) through application properties
-   https://www.baeldung.com/spring-boot-info-actuator-custom
+   By default info endpoint will not have any data.We can add static info(info and description), environment info(java version) through application properties (https://www.baeldung.com/spring-boot-info-actuator-custom)
    
-   1. Config satic info    
-      info.app.name= Spring Boot Actuator
-      info.app.description=This project is to simulate Acuator 
-      info.app.version=1.0.0
+   1. Config satic info   <br/>  
+      info.app.name= Spring Boot Actuator <br/>
+      info.app.description=This project is to simulate Acuator  <br/>
+      info.app.version=1.0.0 <br/>
       
-   2. Config Env info
-      info.java-vendor = ${java.specification.vendor}
+   2. Config Env info <br/>
+      info.java-vendor = ${java.specification.vendor} <br/>
       
-   3. No check the actuator info endpoint above configured info will be displayed.
-      http://localhost:8080/actuator/info      
+   3. No check the actuator info endpoint above configured info will be displayed. <br/>
+      http://localhost:8080/actuator/info       <br/>
       
-   4. We can config dynamic info also refer below URL for more
+   4. We can config dynamic info also refer below URL for more <br/>
       https://www.baeldung.com/spring-boot-info-actuator-custom
   
