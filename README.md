@@ -99,6 +99,7 @@
    1. Create starter project using STS or https://start.spring.io/ with below starters
       - Spring Web
       - Actuator
+      
    2. Create Rest Endpoint with Hello message
       http://localhost:8080/hello
       
@@ -110,5 +111,7 @@
          } <br/>
       }  
       
-   3. Run the application as Spring boot application and check the rest endpoint
-      - it should return hello message
+   3. Run the application as Spring boot application and check the actuator endpoint
+      - http://localhost:8080/actuator
+      - It will display helth and info endpoint
+      - If we need management endpoint we have to enable in property file
