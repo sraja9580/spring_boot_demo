@@ -133,4 +133,12 @@
       
    4. We can config dynamic info also refer below URL for more <br/>
       https://www.baeldung.com/spring-boot-info-actuator-custom
+      
+  ### 3.3 Enable Management Endpoints
+  In order to access the actuator endpoints using HTTP, we need to both **enable** and **expose** them. By default, all endpoints but /shutdown are enabled.  Only the **/health and /info** endpoints are exposed by default.<br/>
   
+   1. Expose all endpoints<br/>
+      management.endpoints.web.exposure.include=*<br/>
+      
+   2. Enable specific endpoints<br/>
+   
