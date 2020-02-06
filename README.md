@@ -222,7 +222,7 @@
 ### 4.3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
    with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
    - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
-   Create Custom Response Class
+   1. Create Custom Response Class
       @Getter<br/>
       @Setter<br/>
       @NoArgsConstructor<br/>
@@ -233,16 +233,27 @@
          private String message;<br/>
          private String details;<br/>
       }<br/>
-   #### 4.3.1 Handle All Exceptions  
-   1. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
+   
+   2. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
       **open the class file ResponseEntityExceptionHandler and implement method you need**<br/>
-      public class CustomExceptionHandler extends ResponseEntityExceptionHandler {	<br/>
-      @ExceptionHandler(Exception.class)<br/>
-      public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {<br/>
-         ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));<br/>
-         return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);<br/>
-      }<br/>
-      }<br/>
+      
+
+@RestControllerAdvice
+public class CustomExceptionHandler extends ResponseEntityExceptionHandler {		
+	@ExceptionHandler(Exception.class)
+	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
+		ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+	}	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(
+			MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), "Validation Failed", ex.getBindingResult().toString());
+		return new ResponseEntity(exResponse,HttpStatus.BAD_REQUEST);
+	}
+}
+
+
    
    2. if you check now with all the exceptions are handled by CustomExceptionHandler class
       - ProductNotFoundException
