@@ -161,6 +161,23 @@
          }
          return product;
       } 
+      
+      @RestControllerAdvice
+      public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+
+         @ExceptionHandler(Exception.class)
+         public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
+            ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+            return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+
+         @Override
+         public ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
+               HttpHeaders headers, HttpStatus status, WebRequest request) {		 
+            ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+            return new ResponseEntity(exResponse,HttpStatus.BAD_REQUEST);
+         }
+      }
 ### 4.1 Access UnAvaiable resource
    1. Access http://localhost:8080/product/135 in this we dont have product id 135 in table.
    2. when you access you will get 200 response code with empty body (image need to be added)
