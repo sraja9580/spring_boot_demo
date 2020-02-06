@@ -35,12 +35,12 @@
    
 ## 4.2 Throw Custom Exception when product not found
    1. Create new ProductNotFoundException class
-      //**@ResponseStatus(HttpStatus.NOT_FOUND)** //this anotation helps us to retrun specific response code<br/>
-      public class ProductNotFoundException extends RuntimeException {<br/>
-         public  ProductNotFoundException(String message){<br/>
-            super(message);<br/>
-         }<br/>
-      }<br/>
+      //**@ResponseStatus(HttpStatus.NOT_FOUND)** //this anotation helps us to retrun specific response code
+      public class ProductNotFoundException extends RuntimeException {
+         public  ProductNotFoundException(String message){
+            super(message);
+         }
+      }
    2. Creare new method with different endpoint and throud ProductNotFoundException id product not available in table
    
       @GetMapping("/ntfndexp/{id}")<br/>
