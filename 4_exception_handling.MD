@@ -28,12 +28,12 @@
             return new ResponseEntity(exResponse,HttpStatus.BAD_REQUEST);
          }
       }
-## 4.1 Access UnAvaiable resource
+## 1 Access UnAvaiable resource
    1. Access http://localhost:8080/product/135 in this we dont have product id 135 in table.
    2. when you access you will get 200 response code with empty body (image need to be added)
    3. **we should have got 404 resource not found**
    
-## 4.2 Throw Custom Exception when product not found
+## 2 Throw Custom Exception when product not found
    1. Create new ProductNotFoundException class
       //**@ResponseStatus(HttpStatus.NOT_FOUND)** //this anotation helps us to retrun specific response code
       public class ProductNotFoundException extends RuntimeException {
@@ -69,7 +69,7 @@
    4. Now try resource that is not available in table with new endpoint after adding ResponseStatus anotation
       you will get same error message with **404 Not found response code**
       
-## 4.3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
+## 3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
    with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
    - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
    Create Custom Response Class
