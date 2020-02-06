@@ -223,16 +223,18 @@
    with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
    - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
    1. Create Custom Response Class
-      @Getter<br/>
-      @Setter<br/>
-      @NoArgsConstructor<br/>
-      @AllArgsConstructor<br/>
-      @ToString<br/>
-      public class ProductExceptionResponse {<br/>
-         private Date timeStamp;<br/>
-         private String message;<br/>
-         private String details;<br/>
-      }<br/>
+   
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@ToString
+	public class ProductExceptionResponse {
+		private Date timeStamp;
+		private String message;
+		private String details;
+	}
+
    
    2. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
       **open the class file ResponseEntityExceptionHandler and implement method you need**<br/>
