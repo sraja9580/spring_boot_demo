@@ -150,5 +150,4 @@
       refere https://www.baeldung.com/spring-boot-actuators
    
 ## 4. Exception Handling(4_springboot_exception_handling)
-[click on this link](#my-multi-word-header)
-### My Multi Word Header
+## <a name="2. Spring boot DB connection - CRUD (2_springboot_crud)">2. Spring boot DB connection - CRUD (2_springboot_crud)</a>
