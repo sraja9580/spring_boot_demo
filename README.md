@@ -168,7 +168,7 @@
    
 ### 4.2 Throw Custom Exception when product not found
    1. Create new ProductNotFoundException class
-   
+      //**@ResponseStatus(HttpStatus.NOT_FOUND)** //this anotation helps us to retrun specific response code
       public class ProductNotFoundException extends RuntimeException {<br/>
          public  ProductNotFoundException(String message){<br/>
             super(message);<br/>
@@ -198,3 +198,6 @@
           "message": "product with id 135 not found in the system",<br/>
           "path": "/product/ntfndexp/135"<br/>
          }
+     it should have returned **404 Not found** you can do this by adding **@ResponseStatus(HttpStatus.NOT_FOUND)** to exception class ProductNotFoundException
+   4. Now try resource that is not available in table with new endpoint after adding ResponseStatus anotation
+      you will get same error message with **404 Not found response code**
