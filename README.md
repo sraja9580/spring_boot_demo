@@ -201,3 +201,7 @@
      it should have returned **404 Not found** you can do this by adding **@ResponseStatus(HttpStatus.NOT_FOUND)** to exception class ProductNotFoundException
    4. Now try resource that is not available in table with new endpoint after adding ResponseStatus anotation
       you will get same error message with **404 Not found response code**
+      
+### 4.3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
+   with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
+   - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
