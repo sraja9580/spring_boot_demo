@@ -164,5 +164,5 @@
 ### 4.1 Access UnAvaiable resource
    1. Access http://localhost:8080/product/135 in this we dont have product id 135 in table.
    2. when you access you will get 200 response code with empty body (image need to be added)
-   3. *we should have got 404 resource not found*
+   3. **we should have got 404 resource not found**
    
