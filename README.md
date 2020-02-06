@@ -197,11 +197,36 @@
           "error": "Internal Server Error",<br/>
           "message": "product with id 135 not found in the system",<br/>
           "path": "/product/ntfndexp/135"<br/>
-         }
-     it should have returned **404 Not found** you can do this by adding **@ResponseStatus(HttpStatus.NOT_FOUND)** to exception class ProductNotFoundException
+         }<br/>
+     it should have returned **404 Not found** you can do this by adding **@ResponseStatus(HttpStatus.NOT_FOUND)** to exception class ProductNotFoundException<br/>
    4. Now try resource that is not available in table with new endpoint after adding ResponseStatus anotation
       you will get same error message with **404 Not found response code**
       
 ### 4.3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
    with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
    - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
+   1. Create Custom Response Class
+      @Getter<br/>
+      @Setter<br/>
+      @NoArgsConstructor<br/>
+      @AllArgsConstructor<br/>
+      @ToString<br/>
+      public class ProductExceptionResponse {<br/>
+         private Date timeStamp;<br/>
+         private String message;<br/>
+         private String details;<br/>
+      }<br/>
+      
+   2. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
+      **open the class file ResponseEntityExceptionHandler and implement method you need**<br/>
+      public class CustomExceptionHandler extends ResponseEntityExceptionHandler {	<br/>
+      @ExceptionHandler(Exception.class)<br/>
+      public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {<br/>
+         ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));<br/>
+         return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);<br/>
+      }<br/>
+      }<br/>
+   
+   3. if you check now with all the exceptions are handled by CustomExceptionHandler class
+      - ProductNotFoundException
+      - Othe exceptions also -> to simulate this create endpoint with method just throws some exception. it will be handled
