@@ -238,20 +238,20 @@
       **open the class file ResponseEntityExceptionHandler and implement method you need**<br/>
       
 
-@RestControllerAdvice
-public class CustomExceptionHandler extends ResponseEntityExceptionHandler {		
-	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
-		ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);
-	}	
-	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(
-			MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-		ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), "Validation Failed", ex.getBindingResult().toString());
-		return new ResponseEntity(exResponse,HttpStatus.BAD_REQUEST);
+	@RestControllerAdvice
+	public class CustomExceptionHandler extends ResponseEntityExceptionHandler {		
+		@ExceptionHandler(Exception.class)
+		public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
+			ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+			return new ResponseEntity(exResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+		}	
+		@Override
+		protected ResponseEntity<Object> handleMethodArgumentNotValid(
+				MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+			ProductExceptionResponse exResponse = new ProductExceptionResponse(new Date(), "Validation Failed", ex.getBindingResult().toString());
+			return new ResponseEntity(exResponse,HttpStatus.BAD_REQUEST);
+		}
 	}
-}
 
 
    
