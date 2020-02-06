@@ -255,6 +255,47 @@
 		}
 	}
 
+   3.sdgsdg
+
+	@RestController
+	@RequestMapping("/product")
+	public class ProducrController {
+
+		@Autowired
+		ProductRepo productRepo;
+
+		//READ
+		@GetMapping("/{id}")
+		public Product getProduct(@PathVariable(name="id") Long productId){
+			Product product = null;
+			Optional<Product> productOptnl = productRepo.findById(productId);
+			if(productOptnl.isPresent()){
+				product = productOptnl.get();
+			}
+			return product;
+		} 
+
+		//READ
+		@GetMapping("/ntfndexp/{id}")
+		public Product getProductWithProductNotFoundException(@PathVariable(name="id") Long productId){
+			Product product = null;
+			Optional<Product> productOptnl = productRepo.findById(productId);
+			if(productOptnl.isPresent()){
+				product = productOptnl.get();
+			}else{
+				throw new ProductNotFoundException("product with id "+productId+" not found in the system");
+			}
+			return product;
+		} 
+
+		//@Valid anotation triggers javx validation actual validations are defined in bean class Product
+		//UPDATE
+		@PutMapping
+		public Product update(@Valid @RequestBody Product p){
+			return productRepo.save(p);
+		} 
+
+	}
 
    
    2. if you check now with all the exceptions are handled by CustomExceptionHandler class
