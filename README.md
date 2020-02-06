@@ -205,7 +205,7 @@
 ### 4.3 Customize and centralize exception handling with ResponseEntityExceptionHandler and ControllerAdvice
    with the use of ResponseEntityExceptionHandler we can handle exception like badrequest(somt param missed or not correct) in a comman class.
    - **@RestControllerAdvice** is used on class implementing ResponseEntityExceptionHandler to apply on all controller classes
-   1. Create Custom Response Class
+   Create Custom Response Class
       @Getter<br/>
       @Setter<br/>
       @NoArgsConstructor<br/>
@@ -216,8 +216,8 @@
          private String message;<br/>
          private String details;<br/>
       }<br/>
-      
-   2. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
+   #### 4.3.1 Handle All Exceptions  
+   1. Provide implementation for ResponseEntityExceptionHandler to just handle all exceptions<br/>
       **open the class file ResponseEntityExceptionHandler and implement method you need**<br/>
       public class CustomExceptionHandler extends ResponseEntityExceptionHandler {	<br/>
       @ExceptionHandler(Exception.class)<br/>
@@ -227,6 +227,6 @@
       }<br/>
       }<br/>
    
-   3. if you check now with all the exceptions are handled by CustomExceptionHandler class
+   2. if you check now with all the exceptions are handled by CustomExceptionHandler class
       - ProductNotFoundException
       - Othe exceptions also -> to simulate this create endpoint with method just throws some exception. it will be handled
