@@ -166,3 +166,35 @@
    2. when you access you will get 200 response code with empty body (image need to be added)
    3. **we should have got 404 resource not found**
    
+### 4.2 Throw Custom Exception when product not found
+   1. Create new ProductNotFoundException class
+   
+      public class ProductNotFoundException extends RuntimeException {
+         public  ProductNotFoundException(String message){
+            super(message);
+         }
+      }
+   2. Creare new method with different endpoint and throud ProductNotFoundException id product not available in table
+   
+      @GetMapping("/ntfndexp/{id}")
+      public Product getProductWithProductNotFoundException(@PathVariable(name="id") Long productId){
+         Product product = null;
+         Optional<Product> productOptnl = productRepo.findById(productId);
+         if(productOptnl.isPresent()){
+            product = productOptnl.get();
+         }else{
+            throw new ProductNotFoundException("product with id "+productId+" not found in the system");
+         }
+         return product;
+      } 
+   
+   3. Now try resource that is not available in table with new endpoint
+      http://localhost:8080/product/ntfndexp/135
+      U will be getting **500 internal server error** with below error messsage
+         {
+          "timestamp": "2020-02-06T13:10:05.981+0000",
+          "status": 500,
+          "error": "Internal Server Error",
+          "message": "product with id 135 not found in the system",
+          "path": "/product/ntfndexp/135"
+         }
