@@ -150,4 +150,19 @@
       refere https://www.baeldung.com/spring-boot-actuators
    
 ## 4. Exception Handling(4_springboot_exception_handling)
-## <a name="2. Spring boot DB connection - CRUD (2_springboot_crud)">2. Spring boot DB connection - CRUD (2_springboot_crud)</a>
+      create project by reffering section 2. Spring boot DB connection - CRUD
+      resource class will have following get resource
+      @GetMapping("/{id}")
+      public Product getProduct(@PathVariable(name="id") Long productId){
+         Product product = null;
+         Optional<Product> productOptnl = productRepo.findById(productId);
+         if(productOptnl.isPresent()){
+            product = productOptnl.get();
+         }
+         return product;
+      } 
+### 4.1 Access UnAvaiable resource
+   1. Access http://localhost:8080/product/135 in this we dont have product id 135 in table.
+   2. when you access you will get 200 response code with empty body (image need to be added)
+   3. *we should have got 404 resource not found*
+   
